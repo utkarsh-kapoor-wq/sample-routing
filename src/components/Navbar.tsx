@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { subjects } from "@/data/subjects";
+import { subjects } from "../data/subjects";
 
 const Navbar = () => {
   return (

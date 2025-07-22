@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { subjects } from "@/data/subjects";
-
-interface SubjectPageProps {
-  params: {
-    slug: string;
-  };
-}
+import { subjects } from "../../../data/subjects";
 
 export async function generateStaticParams() {
   return subjects.map((subject) => ({
@@ -14,8 +8,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: SubjectPageProps) {
-  const subject = subjects.find((s) => s.slug === params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const subject = subjects.find((s) => s.slug === slug);
 
   if (!subject) {
     return {
@@ -29,8 +28,13 @@ export async function generateMetadata({ params }: SubjectPageProps) {
   };
 }
 
-export default function SubjectPage({ params }: SubjectPageProps) {
-  const subject = subjects.find((s) => s.slug === params.slug);
+export default async function SubjectPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const subject = subjects.find((s) => s.slug === slug);
 
   if (!subject) {
     notFound();
