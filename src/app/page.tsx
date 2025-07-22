@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { subjects } from '@/data/subjects';
+import Link from "next/link";
+import { subjects } from "@/data/subjects";
 
 export default function Home() {
   return (
@@ -8,10 +8,11 @@ export default function Home() {
         Welcome to Sample Routing
       </h1>
       <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-        Explore different subjects by clicking on the navigation links above or the subject cards below.
-        This demonstrates Next.js App Router with dynamic routing.
+        Explore different subjects by clicking on the navigation links above or
+        the subject cards below. This demonstrates Next.js App Router with
+        dynamic routing.
       </p>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {subjects.map((subject) => (
           <Link
